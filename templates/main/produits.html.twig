@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous nos produits{% endblock %}
+
+{% block body %}
+    <h1 class="container">Tous nos produits</h1>
+	<div class="containerProduitAll container">
+			{% for produit in produits %}
+				<a href="{{ path('produitDetails', {'produitId': produit.id}) }}">
+					<div class="cardProduit">
+						<img src="{{ produit.image }}" alt="{{ produit.nom }}">
+						<strong>{{ produit.nom }}</strong>
+						<kbd>
+							{% if produit.stock > 0 %}En stock{% else %}Rupture de stock
+							{% endif %}
+
+						</kbd>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+{% endblock %}

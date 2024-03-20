@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les Commentaires{% endblock %}
+
+{% block body %}
+
+	<header class="container">
+		<h1>Hello Admin</h1>
+		<a href="{{ path('adminHome') }}">
+			<button class="secondary outline">Produits</button>
+		</a>
+		<a href="{{ path('adminCommentaires') }}">
+			<button class="secondary">Commentaires</button>
+		</a>
+	</header>
+	<main class="container">
+		<h2>Commentaires</h2>
+		<div class="container">
+
+			<table class="striped">
+			<tr>
+				<th></th><th>Produit</th><th>Commentaire</th><th></th><th></th></tr>
+				{% for commentaire in commentaires %}
+					<tr>
+						<td><img src="{{commentaire.produit.image}}" alt="{{commentaire.produit.nom}}" class="commentaireImage"></td>
+						<td>{{commentaire.produit.nom}}</td>
+						<td>{{ commentaire.titre }}</td>
+						<td>
+							<a href="{{ path('commentaireDetails', {'commentaireId': commentaire.id}) }}"><button class="">Lire</button></a>
+						</td>
+						<td>
+							<form action="{{ path('commentaireDelete') }}" method="post">
+								<input type="hidden" name="commentaireId" value="{{ commentaire.id }}">
+								<input type="submit" value="Supprimer" class="secondary outline">
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</main>
+
+
+{% endblock %}

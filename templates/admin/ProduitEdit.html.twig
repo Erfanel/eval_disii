@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon produit{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<h1>Modifier mon produit</h1>
+		<a href="{{ path('adminHome') }}"><button>Retour</button></a>
+		{{form_start(produitForm)}}
+		{{form_widget(produitForm)}}
+		<input type="submit" value="Enregistrer"/>
+		{{form_end(produitForm)}}
+	</main>
+
+
+{% endblock %}

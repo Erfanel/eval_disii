@@ -1,0 +1,87 @@
+
+a{
+    text-decoration: unset;
+    color: unset;
+}
+
+nav a:hover{
+    color: skyblue;
+}
+
+.cardProduit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    border-radius: 0.5rem;
+    height: 100%;
+    gap: 0.5rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.1);
+    padding: 0.5rem 1rem;
+    & img{
+        max-width: 5rem;  
+    }
+    &:hover{
+       transform: translateY(-0.5rem);
+       transition: 0.2s;
+    }
+}
+
+.containerProduit{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+    gap: 1rem;
+}
+
+.containerProduitAll{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 1rem;
+}
+
+.ficheProduit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & img{
+        max-width: 20rem;
+    }
+    max-width: 50%;
+}
+
+.containerFiche{
+    display: flex;
+    justify-content: center;
+}
+
+.logoNav{
+    max-width: 2rem;
+}
+.logoIndex{
+    max-width: 10rem;
+}
+
+.indexHeader{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.containerCommentaire{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+
+.commentaireImage{
+    max-width: 5rem;
+}
+
+.commentaireHeader{
+    display: flex;
+    justify-content: space-between;
+}

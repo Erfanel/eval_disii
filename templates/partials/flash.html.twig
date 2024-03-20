@@ -1,0 +1,5 @@
+{% for type, messages in app.flashes %}
+<mark class="flash {{ type }} ">
+    {{ messages | join (". ") }}
+</mark>
+{% endfor %}

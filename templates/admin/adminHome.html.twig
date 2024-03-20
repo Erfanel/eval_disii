@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace Admin
+{% endblock %}
+
+{% block body %}
+	<header class="container">
+		<h1>Hello Admin</h1>
+		<div class="container">
+			<a href="{{ path('adminHome') }}">
+				<button class="secondary">Produits</button>
+			</a>
+			<a href="{{ path('adminCommentaires') }}">
+				<button class="secondary outline">Commentaires</button>
+			</a>
+		</div>
+	</header>
+	<main class="container">
+		<h2>Produits</h2>
+		<a href="{{ path('produitAdd') }}"><button>Ajouter un produit</button></a>
+		<div>
+			<table class="striped">
+				{% for produit in produits %}
+					<tr>
+						<td>{{ produit.nom }}</td>
+						<td>
+							<a href="{{ path('produitDetails', {'produitId': produit.id}) }}">
+								<button>Voir</button>
+							</a>
+						</td>
+						<td>
+							<a href="{{ path('produitEdit', {'produitId': produit.id}) }}">
+								<button class="secondary">Modifier</button>
+							</a>
+						</td>
+						<td>
+							<form method="POST" action="{{ path('produitDelete') }}">
+								<input type="hidden" name="produitId" value="{{ produit.id }}"/>
+								<input type="submit" class="secondary outline" value="Supprimer"/>
+							</form>
+						</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</main>
+
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+	<header class="container">
+		<a href="{{ path('adminCommentaires') }}">
+			<button class="secondary outline">Retour aux commentaires</button>
+		</a>
+	</header>
+	<main class="container">
+		<div>
+			<img src="{{ commentaire.produit.image }}" alt="" class="commentaireImage">
+			<h2>{{ commentaire.produit.nom }}</h2>
+		</div>
+		<article>
+			<header>
+				<div class="commentaireHeader">
+					<h3>{{ commentaire.titre }}</h3>
+					<form action="{{ path('commentaireDelete') }}" method="post">
+						<input type="hidden" name="commentaireId" value="{{ commentaire.id }}">
+						<input type="submit" value="Supprimer" class="secondary">
+					</form>
+				</div>
+			</header>
+			<p>{{ commentaire.contenu }}</p>
+		</article>
+	</main>
+
+
+{% endblock %}

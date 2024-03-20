@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{produit.nom }}{% endblock %}
+
+{% block body %}
+	<h1 class="container">{{ produit.nom }}</h1>
+
+	<div class="containerFiche">
+		<div class="ficheProduit">
+			<img src={{ produit.image }} alt="{{ produit.nom }}">
+			<p>{{produit.nom}}</p>
+			<p>{{ produit.description }}</p>
+			<p>
+				Stocks: <strong> {{ produit.stock }}</strong>
+			</p>
+		</div>
+	</div>
+	<div class ="containerCommentaire">
+		{% if commentaires|length > 0 %}
+		<div class="commentaireAccordion">
+			<h2>Commentaires</h2>
+			{% for commentaire in commentaires %}
+				<details >
+					<summary role="button" class="secondary outline">
+						{{commentaire.titre}}
+					</summary>
+					<p>
+						{{commentaire.contenu}}
+					</p>
+				</details>
+			{% endfor %}
+		</div>
+		{% else %}
+			<h2>Aucun commentaire</h2>
+		{% endif %}
+	
+		<div class="commentaireForm">
+			<h2>Ajouter un commentaire</h2>
+			<form action="{{ path('produitDetails', {'produitId': produit.id} ) }}" method="post">
+				{{ form_start(commentaireForm) }}
+				{{ form_widget(commentaireForm) }}
+				<button type="submit">Envoyer</button>
+				{{ form_end(commentaireForm) }}
+			</form>
+
+		</div>
+
+
+	</div>
+
+{% endblock %}
